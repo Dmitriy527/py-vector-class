@@ -13,11 +13,11 @@ class Vector:
     def __sub__(self, other: Vector) -> Vector:
         return Vector(self.x - other.x, self.y - other.y)
 
-    def __mul__(self, other: Vector | int | float) -> Vector:
+    def __mul__(self, other: Vector | int | float) -> Vector | float:
         if isinstance(other, (int, float)):
             return Vector(self.x * other, self.y * other)
         elif isinstance(other, Vector):
-            return Vector(self.x * other.x, self.y * other.y)
+            return self.x * other.x + self.y * other.y
 
     @classmethod
     def create_vector_by_two_points(
@@ -48,8 +48,8 @@ class Vector:
             raise ValueError
         cos_angle = self.y / vector_length
         angle_radians = math.acos(cos_angle)
-        if self.x < 0:
-            angle_radians = 2 * math.pi - angle_radians
+        # if self.x < 0:
+        #     angle_radians = 2 * math.pi - angle_radians
         angle_degrees = math.degrees(angle_radians)
         return round(angle_degrees)
 
