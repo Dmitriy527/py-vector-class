@@ -48,8 +48,6 @@ class Vector:
             raise ValueError
         cos_angle = self.y / vector_length
         angle_radians = math.acos(cos_angle)
-        # if self.x < 0:
-        #     angle_radians = 2 * math.pi - angle_radians
         angle_degrees = math.degrees(angle_radians)
         return round(angle_degrees)
 
